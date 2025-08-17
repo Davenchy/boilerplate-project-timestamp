@@ -35,12 +35,12 @@ function parseDate(date) {
   // handle empty inputs
   if (!date) return generateResponse(new Date());
 
-  let parsed_date = new Date(data);
+  let parsedDate = new Date(date);
 
-  if (!isValidDate(parsed_date)) parsed_date = new Date(+date);
-  if (!isValidDate(parsed_date)) return null;
+  if (!isValidDate(parsedDate)) parsedDate = new Date(+date);
+  if (!isValidDate(parsedDate)) return null;
 
-  return generateResponse(parsed_date);
+  return generateResponse(parsedDate);
 }
 
 module.exports = { generateResponse, parseDate, isValidDate };
