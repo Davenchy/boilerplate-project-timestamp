@@ -3,6 +3,7 @@
 
 // init project
 var express = require("express");
+const { parseDate } = require("./helpers");
 var app = express();
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
@@ -23,7 +24,11 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-
+app.get("/api/:date?", function (req, res) {
+  const parsedDate = parseDate(req.params.date || "");
+  if (!parsedDate) return res.status(400).json({ error: "Invalid Date" });
+  res.json(parsedDate);
+});
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
