@@ -8,7 +8,12 @@
  * @param {Date} date - A date object
  * @returns {DateResponse}
  */
-function generateResponse(date) {}
+function generateResponse(date) {
+  return {
+    unix: date.getTime(),
+    utc: date.toUTCString(),
+  };
+}
 
 /**
  * Validates a date object
